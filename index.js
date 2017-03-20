@@ -14,12 +14,12 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 // Index route
-// app.get('/', function (req, res) {
-// 	res.send('Hello world, NOT chat bot')
-// })
+app.get('/', function (req, res) {
+	res.send('Hello world, NOT chat bot')
+})
 
 // for Facebook verification
-app.get('/', function (req, res) {
+app.get('/webhook/', function (req, res) {
 	if (req.query['hub.verify_token'] === 'EAAD07NbRrUgBAORosBc3oE7XsTdlqkSJwDl8EpAoLuax451WLL4ggDEK14I4mXvgQoVHUv2cr8EPLtI68dINkQIrnsjHHHjIJcGhf9Hhh8T20qCWzuZA8mqG1V0U0QZAIKXTgPMvTF5vzBBRPLxtteGoZAYemm1PUfmRlHJfwZDZD') {
 		res.send(req.query['hub.challenge'])
 	}
