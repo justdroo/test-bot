@@ -52,11 +52,7 @@ function sendGenericMessage(sender) {
 				    "buttons": [{
 					    "type": "postback",
 					    "title": "I kno dat",
-					    "payload": "U too fucking extra",
-				    }, {
-					    "type": "postback",
-					    "title": "Thanks!",
-					    "payload": "Ur welcome booboo",
+					    "payload": "U too ",
 				    }],
 			    }, {
 				    "title": "Second card",
