@@ -26,20 +26,6 @@ app.get('/webhook/', function (req, res) {
 	res.send('Error, wrong token')
 })
 
-{
-
-  "subtitle": "Like uber",
-  "buttons": [{
-    "type": "postback",
-    "title": "I kno dat",
-    "payload": "Oh you too fuckin extra",
-  }, {
-    {
-      "type": "postback",
-      "title": "Oh thanks!",
-      "payload": "u welcome",
-    }
-
 function sendGenericMessage(sender) {
     let messageData = {
 	    "attachment": {
@@ -52,7 +38,11 @@ function sendGenericMessage(sender) {
 				    "buttons": [{
 					    "type": "postback",
 					    "title": "I kno dat",
-					    "payload": "U too ",
+					    "payload": "U too fucking extra",
+				    }, {
+					    "type": "postback",
+					    "title": "Thanks!",
+					    "payload": "Ur welcome booboo",
 				    }],
 			    }, {
 				    "title": "Second card",
