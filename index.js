@@ -26,6 +26,20 @@ app.get('/webhook/', function (req, res) {
 	res.send('Error, wrong token')
 })
 
+{
+
+  "subtitle": "Like uber",
+  "buttons": [{
+    "type": "postback",
+    "title": "I kno dat",
+    "payload": "Oh you too fuckin extra",
+  }, {
+    {
+      "type": "postback",
+      "title": "Oh thanks!",
+      "payload": "u welcome",
+    }
+
 function sendGenericMessage(sender) {
     let messageData = {
 	    "attachment": {
@@ -33,26 +47,16 @@ function sendGenericMessage(sender) {
 		    "payload": {
 				"template_type": "generic",
 			    "elements": [{
-					"title": "First card",
-				    "subtitle": "Element #1 of an hscroll",
-				    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+					  "title": "Woah, you're like, super cool",
+				    "subtitle": "Like, really really cool",
 				    "buttons": [{
-					    "type": "web_url",
-					    "url": "https://www.messenger.com",
-					    "title": "web url"
+					    "type": "postback",
+					    "title": "I kno dat",
+					    "payload": "U too fucking extra",
 				    }, {
 					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for first element in a generic bubble",
-				    }],
-			    }, {
-				    "title": "Second card",
-				    "subtitle": "Element #2 of an hscroll",
-				    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-				    "buttons": [{
-					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for second element in a generic bubble",
+					    "title": "Thanks!",
+					    "payload": "Ur welcome boo",
 				    }],
 			    }]
 		    }
