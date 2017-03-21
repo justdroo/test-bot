@@ -77,20 +77,25 @@ function sendGenericMessage(sender) {
 
 
 app.post('/webhook/', function (req, res) {
-    let messaging_events = req.body.entry[0].messaging
-    for (let i = 0; i < messaging_events.length; i++) {
-	    let event = req.body.entry[0].messaging[i]
-	    let sender = event.sender.id
-	    if (event.message && event.message.text) {
-		    let text = event.message.text
-		    if (text === 'Generic') {
-			    sendGenericMessage(sender)
-		    	continue
-		    }
-		    sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-	    }
+  let messaging_events = req.body.entry[0].messaging
+  for (let i = 0; i < messaging_events.length; i++) {
+    let event = req.body.entry[0].messaging[i]
+    let sender = event.sender.id
+    if (event.message && event.message.text) {
+      let text = event.message.text
+      if (text === 'Generic') {
+        sendGenericMessage(sender)
+        continue
+      }
+      sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
     }
-    res.sendStatus(200)
+    if (event.postback) {
+      let text = JSON.stringify(event.postback)
+      sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+      continue
+    }
+  }
+  res.sendStatus(200)
 })
 
 const token = "EAAD07NbRrUgBAFdDbyjacS2EyJHyXWIRkTH2WU0iu3gkcSgIzocvYNW8sBsBnFsdZCaNgODAvJZAeGW0kbHjol8sJmSaYjbNZCj9UGoz8a6YGm9N55k40Cg5JwoU7pTrnVFV0bK9GrvGcJFFCZBkYbsjbrpMARd5sQPwfrmVZBgZDZD"
