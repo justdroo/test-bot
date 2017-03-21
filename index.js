@@ -26,8 +26,6 @@ app.get('/webhook/', function (req, res) {
 	res.send('Error, wrong token')
 })
 
-
-
 function sendGenericMessage(sender) {
     let messageData = {
 	    "attachment": {
@@ -35,17 +33,16 @@ function sendGenericMessage(sender) {
 		    "payload": {
 				"template_type": "generic",
 			    "elements": [{
-					"title": "First card",
-				    "subtitle": "Element #1 of an hscroll",
-				    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+					"title": "You da best",
+				    "subtitle": "like ur so cool",
 				    "buttons": [{
-					    "type": "web_url",
-					    "url": "https://www.messenger.com",
-					    "title": "web url"
+					    "type": "postback",
+					    "title": "I kno dat",
+					    "payload": "Bish y u so extra all the time?"
 				    }, {
 					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for first element in a generic bubble",
+					    "title": "Thanks!",
+					    "payload": "Ur welcome boo boo",
 				    }],
 			    }, {
 				    "title": "Second card",
