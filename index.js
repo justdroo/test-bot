@@ -46,7 +46,7 @@ function setGreetingText() {
   var greetingData = {
     setting_type: "greeting",
     greeting:{
-      text:"Hi {{user_first_name}}, welcome!"
+      text:"Hi {{user_first_name}}, you da best!"
   }
 };
 createGreetingApi(greetingData);
