@@ -75,7 +75,7 @@ function sendGenericMessage(sender) {
 }
 
 
-function sendGenericMessage(sender) {
+function sendColors(sender) {
   let messageData = {
     "attachment": {
       "type": "template",
