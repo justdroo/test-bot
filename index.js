@@ -26,6 +26,32 @@ app.get('/webhook/', function (req, res) {
 	res.send('Error, wrong token')
 })
 
+//Request for setting Greeting message
+function createGreetingApi(data) {
+  request({
+      uri: 'https://graph.facebook.com/v2.6/me/thread_settings',
+      qs: { access_token:token },
+      method: 'POST',
+      json: data
+}, function (error, response, body) {
+if (!error && response.statusCode == 200) {
+  console.log("Greeting set successfully!");
+} else {
+  console.error("Failed calling Thread Reference API", response.statusCode, response.statusMessage, body.error);
+}
+});
+}
+//Setting what the greeting text will be
+function setGreetingText() {
+  var greetingData = {
+    setting_type: "greeting",
+    greeting:{
+      text:"Hi {{user_first_name}}, welcome!"
+  }
+};
+createGreetingApi(greetingData);
+}
+
 function sendGenericMessage(sender) {
     let messageData = {
 	    "attachment": {
@@ -156,4 +182,5 @@ function sendTextMessage(sender, text) {
 // Spin up the server
 app.listen(app.get('port'), function() {
 	console.log('running on port', app.get('port'))
+  setGreetingText();
 })
