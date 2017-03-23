@@ -46,7 +46,13 @@ function setGreetingText() {
   var greetingData = {
     setting_type: "greeting",
     greeting:{
-      text:"Welcome to the test bot *da test bot*"
+      "text":"Welcome to the test bot *da test bot*",
+      "attachment":{
+      "type":"image",
+      "payload":{
+        "url":"http://iruntheinternet.com/lulzdump/images/welcome-to-the-internet-guide-horse-mask-cat-boat-13546737940.png?id="
+      }
+    }
   }
 };
 createGreetingApi(greetingData);
