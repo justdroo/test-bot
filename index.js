@@ -75,6 +75,46 @@ function sendGenericMessage(sender) {
 }
 
 
+function sendGenericMessage(sender) {
+  let messageData = {
+    "attachment": {
+      "type": "template",
+      "payload": {
+      "template_type": "generic",
+        "elements": [{
+        "title": "You da best",
+          "subtitle": "like ur so cool",
+          "buttons": [{
+            "type": "postback",
+            "title": "I kno dat",
+            "payload": "Bish y u so extra all the time?"
+          }, {
+            "type": "postback",
+            "title": "Thanks!",
+            "payload": "Ur welcome boo boo",
+          }],
+        }]
+      }
+    }
+  }
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error)
+    }
+  })
+}
+
+
 app.post('/webhook/', function (req, res) {
   let messaging_events = req.body.entry[0].messaging
   for (let i = 0; i < messaging_events.length; i++) {
@@ -84,6 +124,10 @@ app.post('/webhook/', function (req, res) {
       let text = event.message.text
       if (text === 'Generic') {
         sendGenericMessage(sender)
+        continue
+      }
+      if (text === 'Colors') {
+        sendColors(sender)
         continue
       }
       sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
