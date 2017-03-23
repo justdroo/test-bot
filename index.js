@@ -46,7 +46,6 @@ function setGreetingText() {
   var greetingData = {
     setting_type: "greeting",
     greeting:{
-      let messageData = {
               "text":"Pick a color:",
               "quick_replies":[
                 {
@@ -61,7 +60,7 @@ function setGreetingText() {
                 }
               ]
       }
-  }
+    }
 };
 createGreetingApi(greetingData);
 }
