@@ -77,24 +77,20 @@ function sendGenericMessage(sender) {
 
 function sendColors(sender) {
   let messageData = {
-    "attachment": {
-      "type": "template",
-      "payload": {
-      "template_type": "generic",
-        "elements": [{
-        "title": "You da best",
-          "subtitle": "like ur so cool",
-          "buttons": [{
-            "type": "postback",
-            "title": "I kno dat",
-            "payload": "Bish y u so extra all the time?"
-          }, {
-            "type": "postback",
-            "title": "Thanks!",
-            "payload": "Ur welcome boo boo",
-          }],
-        }]
-      }
+    "message": {
+      "text":"Pick a color:",
+      "quick_replies":[
+        {
+          "content_type":"text",
+          "title":"Red",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+        },
+        {
+          "content_type":"text",
+          "title":"Green",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+        }
+      ]
     }
   }
   request({
