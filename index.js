@@ -1,5 +1,6 @@
 // TODO: Extract into 'config.js'
 'use strict'
+require('app.js')
 
 app.set('port', (process.env.PORT || 5000))
 
