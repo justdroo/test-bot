@@ -1,9 +1,5 @@
+// TODO: Extract into 'config.js'
 'use strict'
-
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const app = express()
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -13,6 +9,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 // Process application/json
 app.use(bodyParser.json())
 
+// TODO: Extract into routes
+
 // Index route
 app.get('/', function (req, res) {
 	res.send('Hello world, this is a test chat bot')
@@ -20,11 +18,13 @@ app.get('/', function (req, res) {
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
-	if (req.query['hub.verify_token'] === 'EAAD07NbRrUgBAORosBc3oE7XsTdlqkSJwDl8EpAoLuax451WLL4ggDEK14I4mXvgQoVHUv2cr8EPLtI68dINkQIrnsjHHHjIJcGhf9Hhh8T20qCWzuZA8mqG1V0U0QZAIKXTgPMvTF5vzBBRPLxtteGoZAYemm1PUfmRlHJfwZDZD') {
+	if (req.query['hub.verify_token'] === token) {
 		res.send(req.query['hub.challenge'])
 	}
 	res.send('Error, wrong token')
 })
+
+// TODO: Extract functions into their own files
 
 //Request for setting Greeting message
 function createGreetingApi(data) {
@@ -160,6 +160,7 @@ app.post('/webhook/', function (req, res) {
   res.sendStatus(200)
 })
 
+// TODO: URGENT::: Put into a .ignore file
 const token = "EAAD07NbRrUgBAFdDbyjacS2EyJHyXWIRkTH2WU0iu3gkcSgIzocvYNW8sBsBnFsdZCaNgODAvJZAeGW0kbHjol8sJmSaYjbNZCj9UGoz8a6YGm9N55k40Cg5JwoU7pTrnVFV0bK9GrvGcJFFCZBkYbsjbrpMARd5sQPwfrmVZBgZDZD"
 
 function sendTextMessage(sender, text) {
