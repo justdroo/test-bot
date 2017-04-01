@@ -1,5 +1,36 @@
+// TODO: Extract into 'config.js'
 'use strict'
-require('app/app.js')
+
+// App framework
+const express = require('express')
+const app = express()
+// For parsing JSON strings
+const bodyParser = require('body-parser')
+// Simplified HTTP client
+const request = require('request')
+
+app.set('port', (process.env.PORT || 5000))
+
+// Process application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}))
+
+// Process application/json
+app.use(bodyParser.json())
+
+// TODO: Extract into routes
+
+// Index route
+app.get('/', function (req, res) {
+	res.send('Hello world, this is a test chat bot')
+})
+
+// for Facebook verification
+app.get('/webhook/', function (req, res) {
+	if (req.query['hub.verify_token'] === token) {
+		res.send(req.query['hub.challenge'])
+	}
+	res.send('Error, wrong token')
+})
 
 // TODO: Extract functions into their own files
 
@@ -158,7 +189,7 @@ function sendTextMessage(sender, text) {
 	    }
     })
 }
-
+// Spin up the server
 app.listen(app.get('port'), function() {
 	console.log('running on port', app.get('port'))
   setGreetingText();
