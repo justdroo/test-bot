@@ -32,7 +32,7 @@ fs.readdirSync('./controllers').forEach(function (file) {
 });
 
 // Spin up the server
-app.listen(app.get('port'), function() {
-	console.log('running on port', app.get('port'))
-  setGreetingText();
-})
+// app.listen(app.get('port'), function() {
+// 	console.log('running on port', app.get('port'))
+//   setGreetingText();
+// })
